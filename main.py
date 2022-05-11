@@ -1,11 +1,9 @@
 import pandas as pd
 import random
 
-# functionalise initialisation
 # add in boat type/ differnt boat number
 # next round generator improvement
 
-# initialize:
 def initialise(no_of_teams):
     teams = []
     for i in range(1, no_of_teams+1):
