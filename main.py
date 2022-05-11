@@ -6,15 +6,17 @@ import random
 # next round generator improvement
 
 # initialize:
-teams = []
-for i in range(1, 37):
-    teams.append('team'+str(i))
-print(teams)
+def initialise(no_of_teams):
+    teams = []
+    for i in range(1, no_of_teams+1):
+        teams.append('team'+str(i))
+    print(teams)
 
-results = pd.DataFrame(teams, columns=['Teams'])
-result = [0] * len(results)
-results['score'] = result
-print(results)
+    results = pd.DataFrame(teams, columns=['Teams'])
+    result = [0] * len(results)
+    results['score'] = result
+    print(results)
+    return teams, results
 
 
 def next_round_generator(teams):
@@ -95,12 +97,14 @@ def complete_round(teams, results):
     return sorted_results
 
 
-def run_simulation(number_of_rounds):
+def run_simulation(number_of_rounds, teams, results):
     for n in range(number_of_rounds):
         sorted_results = complete_round(teams, results)
     return sorted_results
 
 
+number_of_teams = 36
 number_of_rounds = 20
-results = run_simulation(number_of_rounds)
+teams, results = initialise(number_of_teams)
+results = run_simulation(number_of_rounds, teams, results)
 print(results)
